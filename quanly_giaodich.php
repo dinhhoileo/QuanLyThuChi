@@ -97,11 +97,11 @@ $total_expense = array_sum(array_column(array_filter($transactions, fn($t) => $t
                             $inactive_class = "text-gray-600 hover:bg-indigo-100 hover:text-indigo-700";
                             $base_class = "flex-1 text-center font-semibold whitespace-nowrap py-3 px-4 rounded-md text-base transition-colors duration-200";
                         ?>
-                        <a href="giaodich.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'giaodich.php') ? $active_class : $inactive_class; ?>">Tổng quan</a>
+                        
                         <a href="quanly_giaodich.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'quanly_giaodich.php') ? $active_class : $inactive_class; ?>" 
                            <?php echo ($current_page == 'quanly_giaodich.php') ? 'aria-current="page"' : ''; ?>>Quản lý Giao dịch</a>
                         <a href="quanly_danhmuc.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'quanly_danhmuc.php') ? $active_class : $inactive_class; ?>">Danh mục Chi tiêu</a>
-                        <a href="lap_kehoach.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'lap_kehoach.php') ? $active_class : $inactive_class; ?>">Lập kế hoạch</a>
+                       
                     </nav>
                 </div>
 

@@ -99,10 +99,14 @@ function formatCurrency($number) {
             <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="pie-chart"></i>
                 <span class="mx-3">Báo cáo</span>
-            </a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+    </a>
+            <a href="lap_kehoach.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="target"></i>
                 <span class="mx-3">Kế hoạch</span>
+            </a>
+            <a href="nganSachTam.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+                <i data-lucide="wallet"></i>
+                <span class="mx-3">Ngân sách tạm</span>
             </a>
             <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="settings"></i>

@@ -115,58 +115,7 @@ $savingGoals = [
                 </div>
             </form>
 
-            <!-- Danh sách khoản chi -->
-            <h2 class="text-lg font-semibold mb-4">Danh sách khoản chi</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="text-left p-3">Tên khoản chi</th>
-                            <th class="text-left p-3">Số tiền</th>
-                            <th class="text-left p-3">Ngày</th>
-                            <th class="text-left p-3">Danh mục</th>
-                            <th class="text-right p-3">Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y">
-                        <?php foreach ($expenses as $expense): ?>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-3"><?php echo htmlspecialchars($expense['name']); ?></td>
-                            <td class="p-3"><?php echo number_format($expense['amount']) . ' ₫'; ?></td>
-                            <td class="p-3"><?php echo date('d/m/Y', strtotime($expense['date'])); ?></td>
-                            <td class="p-3"><?php echo $categories[$expense['category']]; ?></td>
-                            <td class="p-3 text-right">
-                                <button class="text-blue-500 hover:text-blue-700 mr-3">Sửa</button>
-                                <button class="text-red-500 hover:text-red-700">Xóa</button>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Biểu đồ tổng quan -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-semibold mb-2">Tổng chi dự kiến</h3>
-                <p class="text-3xl font-bold text-blue-500">
-                    <?php echo number_format(array_sum(array_column($expenses, 'amount'))) . ' ₫'; ?>
-                </p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-semibold mb-2">Số khoản chi</h3>
-                <p class="text-3xl font-bold text-green-500">
-                    <?php echo count($expenses); ?> khoản
-                </p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-semibold mb-2">Trung bình/khoản</h3>
-                <p class="text-3xl font-bold text-purple-500">
-                    <?php echo number_format(array_sum(array_column($expenses, 'amount')) / count($expenses)) . ' ₫'; ?>
-                </p>
-            </div>
-        </div>
+        
 
         <!-- Thêm section Mục tiêu tiết kiệm -->
         <div class="bg-white rounded-lg shadow p-6 mb-6">
