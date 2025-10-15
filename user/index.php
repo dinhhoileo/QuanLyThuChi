@@ -1,5 +1,6 @@
 <?php
-// index.php
+header('Location: trangchu.php');
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="vi">

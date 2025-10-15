@@ -59,23 +59,39 @@ $savingGoals = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ngân sách tạm</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root{color-scheme:light}
+        .theme-dark{color-scheme:dark}
+        .theme-dark body{background-color:#0f172a;color:#e5e7eb}
+        .theme-dark .bg-white{background-color:#111827 !important}
+        .theme-dark .text-gray-800{color:#e5e7eb !important}
+        .theme-dark .bg-gray-50{background-color:#0b1220 !important}
+    </style>
+    <script>(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark')document.documentElement.classList.add('theme-dark');}catch(e){}})();</script>
 </head>
-<body class="bg-gray-50">
-    <div class="max-w-6xl mx-auto p-4">
+<body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="sidebar fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform -translate-x-full md:relative md:translate-x-0">
+        <div class="flex items-center justify-center h-20 border-b"><h1 class="text-2xl font-bold text-indigo-600">SpendWise</h1></div>
+        <nav class="mt-6">
+            <a href="trangchu.php" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-200"><i data-lucide="layout-dashboard"></i><span class="mx-3">Bảng điều khiển</span></a>
+            <a href="giaodich.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="arrow-left-right"></i><span class="mx-3">Giao dịch</span></a>
+            <a href="baoCao.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="pie-chart"></i><span class="mx-3">Báo cáo</span></a>
+            <a href="lap_kehoach.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="target"></i><span class="mx-3">Kế hoạch</span></a>
+            <a href="nganSachTam.php" class="flex items-center px-6 py-3 mt-4 text-gray-700 bg-gray-200"><i data-lucide="wallet"></i><span class="mx-3">Ngân sách tạm</span></a>
+            <a href="caiDat.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="settings"></i><span class="mx-3">Cài đặt</span></a>
+        </nav>
+    </aside>
+
+    <div class="flex-1 flex flex-col overflow-hidden">
         <!-- Header -->
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Ngân sách tạm</h1>
-            <div class="flex gap-4">
-                <a href="thongKe.php" class="text-blue-500 hover:text-blue-600 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                        <path d="M12 2.252A8 8 0 0112 18.251v-8H4a8 8 0 018-7.749z" />
-                    </svg>
-                    Xem thống kê
-                </a>
-                <a href="trangchu.php" class="text-blue-500 hover:text-blue-600">← Trang chủ</a>
-            </div>
+        <div class="flex items-center justify-between h-20 px-6 py-4 bg-white border-b">
+            <div class="flex items-center"><button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="h-6 w-6"></i></button><h1 class="text-2xl font-bold text-gray-800 ml-4">Ngân sách tạm</h1></div>
+            <div class="flex gap-4"><a href="thongKe.php" class="text-blue-500 hover:text-blue-600 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" /><path d="M12 2.252A8 8 0 0112 18.251v-8H4a8 8 0 018-7.749z" /></svg>Xem thống kê</a></div>
         </div>
+
+        <div class="flex-1 overflow-x-hidden overflow-y-auto">
+        <div class="max-w-6xl mx-auto p-4">
 
         <!-- Main Content -->
         <div class="bg-white rounded-lg shadow p-6 mb-6">
@@ -272,6 +288,11 @@ $savingGoals = [
             document.querySelector('input[name="end_date"]').addEventListener('change', calculateDailySaving);
             document.querySelector('input[name="target_amount"]').addEventListener('change', calculateDailySaving);
         </script>
+        </div>
+        </div>
     </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();document.getElementById('menu-button').addEventListener('click',()=>{document.querySelector('.sidebar').classList.toggle('-translate-x-full');});</script>
 </body>
 </html>

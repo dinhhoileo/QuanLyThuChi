@@ -28,6 +28,14 @@ $maxMonth = $monthlyData['labels'][array_search(max($monthlyData['expenses']), $
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thống kê chi tiêu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root{color-scheme:light}
+        .theme-dark{color-scheme:dark}
+        .theme-dark body{background-color:#0f172a;color:#e5e7eb}
+        .theme-dark .bg-white{background-color:#111827 !important}
+        .theme-dark .text-gray-800{color:#e5e7eb !important}
+    </style>
+    <script>(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark')document.documentElement.classList.add('theme-dark');}catch(e){}})();</script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50">

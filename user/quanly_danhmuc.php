@@ -34,7 +34,14 @@ $income_count = count(array_filter($categories, fn($cat) => $cat['group'] === 'i
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; } .sidebar { transition: transform 0.3s ease-in-out; } </style>
+    <style> body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; } .sidebar { transition: transform 0.3s ease-in-out; }
+      :root{color-scheme:light}
+      .theme-dark{color-scheme:dark}
+      .theme-dark body{background-color:#0f172a;color:#e5e7eb}
+      .theme-dark .bg-white{background-color:#111827 !important}
+      .theme-dark .text-gray-800{color:#e5e7eb !important}
+    </style>
+    <script>(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark')document.documentElement.classList.add('theme-dark');}catch(e){}})();</script>
 </head>
 <body class="flex h-screen overflow-hidden">
 

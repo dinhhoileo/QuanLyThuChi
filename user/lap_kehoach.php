@@ -49,7 +49,14 @@ $unbudgeted_categories = array_diff($all_categories, $budgeted_categories);
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; } .sidebar { transition: transform 0.3s ease-in-out; } </style>
+    <style> body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; } .sidebar { transition: transform 0.3s ease-in-out; }
+      :root{color-scheme:light}
+      .theme-dark{color-scheme:dark}
+      .theme-dark body{background-color:#0f172a;color:#e5e7eb}
+      .theme-dark .bg-white{background-color:#111827 !important}
+      .theme-dark .text-gray-800{color:#e5e7eb !important}
+    </style>
+    <script>(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark')document.documentElement.classList.add('theme-dark');}catch(e){}})();</script>
 </head>
 <body class="flex h-screen overflow-hidden">
 
@@ -57,16 +64,25 @@ $unbudgeted_categories = array_diff($all_categories, $budgeted_categories);
     <aside class="sidebar fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform -translate-x-full md:relative md:translate-x-0">
         <div class="flex items-center justify-center h-20 border-b"><h1 class="text-2xl font-bold text-indigo-600">SpendWise</h1></div>
         <nav class="mt-6">
-            <!-- BƯỚC 2: Cập nhật liên kết và logic active cho sidebar -->
-            <a href="tongquan.php" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-200 <?php echo ($current_page == 'tongquan.php') ? 'bg-gray-200' : ''; ?>">
+            <!-- Sidebar đồng bộ các trang -->
+            <a href="trangchu.php" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="layout-dashboard"></i><span class="mx-3">Bảng điều khiển</span>
             </a>
-            <a href="giaodich.php" class="flex items-center px-6 py-3 mt-4 text-gray-700 hover:bg-gray-200 <?php echo in_array($current_page, ['giaodich.php', 'quanly_giaodich.php', 'quanly_danhmuc.php', 'lap_kehoach.php']) ? 'bg-gray-200' : ''; ?>">
+            <a href="giaodich.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="arrow-left-right"></i><span class="mx-3">Giao dịch</span>
             </a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="pie-chart"></i><span class="mx-3">Báo cáo</span></a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="target"></i><span class="mx-3">Kế hoạch</span></a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200"><i data-lucide="settings"></i><span class="mx-3">Cài đặt</span></a>
+            <a href="baoCao.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+                <i data-lucide="pie-chart"></i><span class="mx-3">Báo cáo</span>
+            </a>
+            <a href="lap_kehoach.php" class="flex items-center px-6 py-3 mt-4 text-gray-700 bg-gray-200">
+                <i data-lucide="target"></i><span class="mx-3">Kế hoạch</span>
+            </a>
+            <a href="nganSachTam.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+                <i data-lucide="wallet"></i><span class="mx-3">Ngân sách tạm</span>
+            </a>
+            <a href="caiDat.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+                <i data-lucide="settings"></i><span class="mx-3">Cài đặt</span>
+            </a>
         </nav>
     </aside>
 
@@ -75,7 +91,7 @@ $unbudgeted_categories = array_diff($all_categories, $budgeted_categories);
         <header class="flex items-center justify-between h-20 px-6 py-4 bg-white border-b">
              <div class="flex items-center">
                 <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="h-6 w-6"></i></button>
-                <h2 class="text-2xl font-semibold text-gray-800 ml-4">Giao Dịch</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 ml-4">Kế hoạch</h2>
             </div>
              <div class="flex items-center">
                  <button id="add-budget-btn" class="flex items-center justify-center bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700">
@@ -92,22 +108,7 @@ $unbudgeted_categories = array_diff($all_categories, $budgeted_categories);
         <!-- Main Content -->
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
             <div class="container mx-auto">
-                <!-- Thanh điều hướng phụ -->
-                <div class="mb-6 bg-white rounded-lg shadow-md p-2">
-                    <nav class="flex space-x-2" aria-label="Tabs">
-                        <!-- BƯỚC 3: Cập nhật liên kết và logic active cho các tab -->
-                        <?php 
-                            $active_class = "bg-indigo-600 text-white";
-                            $inactive_class = "text-gray-600 hover:bg-indigo-100 hover:text-indigo-700";
-                            $base_class = "flex-1 text-center font-semibold whitespace-nowrap py-3 px-4 rounded-md text-base transition-colors duration-200";
-                        ?>
-                        <a href="giaodich.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'giaodich.php') ? $active_class : $inactive_class; ?>">Tổng quan</a>
-                        <a href="quanly_giaodich.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'quanly_giaodich.php') ? $active_class : $inactive_class; ?>">Quản lý Giao dịch</a>
-                        <a href="quanly_danhmuc.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'quanly_danhmuc.php') ? $active_class : $inactive_class; ?>">Danh mục Chi tiêu</a>
-                        <a href="lap_kehoach.php" class="<?php echo $base_class; ?> <?php echo ($current_page == 'lap_kehoach.php') ? $active_class : $inactive_class; ?>"
-                           <?php echo ($current_page == 'lap_kehoach.php') ? 'aria-current="page"' : ''; ?>>Lập kế hoạch</a>
-                    </nav>
-                </div>
+                <!-- Bỏ nhóm tab phụ để đồng bộ giao diện -->
                 
                 <!-- Thẻ Tóm Tắt Tổng Quan -->
                 <div class="mb-8">

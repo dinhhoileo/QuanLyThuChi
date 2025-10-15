@@ -79,6 +79,18 @@ function formatCurrency($number) {
             transition: transform 0.3s ease-in-out;
         }
     </style>
+    <style>
+        :root{color-scheme:light}
+        .theme-dark{color-scheme:dark}
+        .theme-dark body{background-color:#0f172a;color:#e5e7eb}
+        .theme-dark .bg-white{background-color:#111827 !important}
+        .theme-dark .bg-gray-100{background-color:#0b1220 !important}
+        .theme-dark .text-gray-700,.theme-dark .text-gray-800,.theme-dark .text-gray-900{color:#e5e7eb !important}
+        .theme-dark .text-gray-600{color:#cbd5e1 !important}
+        .theme-dark .hover\:bg-gray-200:hover{background-color:#1f2937 !important}
+    </style>
+    <script>(function(){try{var t=localStorage.getItem('theme')||'light';if(t==='dark')document.documentElement.classList.add('theme-dark');}catch(e){}})();
+    </script>
 </head>
 <body class="flex h-screen overflow-hidden">
 
@@ -88,15 +100,15 @@ function formatCurrency($number) {
             <h1 class="text-2xl font-bold text-indigo-600">SpendWise</h1>
         </div>
         <nav class="mt-6">
-            <a href="#" class="flex items-center px-6 py-3 text-gray-700 bg-gray-200">
+            <a href="trangchu.php" class="flex items-center px-6 py-3 text-gray-700 bg-gray-200">
                 <i data-lucide="layout-dashboard"></i>
                 <span class="mx-3">Bảng điều khiển</span>
             </a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+            <a href="giaodich.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="arrow-left-right"></i>
                 <span class="mx-3">Giao dịch</span>
             </a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+            <a href="baoCao.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="pie-chart"></i>
                 <span class="mx-3">Báo cáo</span>
     </a>
@@ -108,7 +120,7 @@ function formatCurrency($number) {
                 <i data-lucide="wallet"></i>
                 <span class="mx-3">Ngân sách tạm</span>
             </a>
-            <a href="#" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
+            <a href="caiDat.php" class="flex items-center px-6 py-3 mt-4 text-gray-600 hover:bg-gray-200">
                 <i data-lucide="settings"></i>
                 <span class="mx-3">Cài đặt</span>
             </a>
@@ -216,6 +228,16 @@ function formatCurrency($number) {
                             <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
+
+                <!-- Giới thiệu (Intro) -->
+                <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Giới thiệu</h3>
+                    <p class="text-gray-600 mb-4">
+                        SpendWise giúp bạn theo dõi thu chi, lập kế hoạch và báo cáo tài chính cá nhân một cách trực quan.
+                        Đây là phần nội dung giới thiệu ngắn. Để xem phần giới thiệu chi tiết hơn, vui lòng mở trang Giới thiệu.
+                    </p>
+                    <a href="about.php" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Xem chi tiết Giới thiệu</a>
                 </div>
             </div>
         </main>
