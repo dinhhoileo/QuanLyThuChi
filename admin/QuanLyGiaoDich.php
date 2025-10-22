@@ -78,7 +78,7 @@ $total_expense = array_sum(array_column(array_filter($transactions, fn($t) => $t
         <header class="flex items-center justify-between h-20 px-6 py-4 bg-white border-b">
              <div class="flex items-center">
                 <button id="menu-button" class="text-gray-500 focus:outline-none md:hidden"><i data-lucide="menu" class="h-6 w-6"></i></button>
-                <h2 class="text-2xl font-semibold text-gray-800 ml-4">Quản Lý Giao Dịch </h2>
+                <h2 class="text-2xl font-semibold text-gray-800 ml-4">Quản Lý Giao Dịch (Admin)</h2>
             </div>
              <div class="flex items-center">
                  <button id="add-transaction-btn" class="flex items-center justify-center bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700">
